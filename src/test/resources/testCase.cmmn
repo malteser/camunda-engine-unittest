@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cmmn:definitions name="TestCase"
+                  targetNamespace="http://www.trisotech.com/cmmn/definitions/_18ab44c8-dfd9-48b9-942f-bdd80113d4d8"
+                  xmlns="http://www.trisotech.com/cmmn/definitions/_18ab44c8-dfd9-48b9-942f-bdd80113d4d8"
+                  xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL"
+                  xmlns:camunda="http://camunda.org/schema/1.0/cmmn">
+
+    <cmmn:case id="TestCase">
+        <cmmn:casePlanModel autoComplete="false" id="CPM">
+            <cmmn:planItem id="HumanTask" definitionRef="HumanTaskDef" />
+            <cmmn:humanTask id="HumanTaskDef" name="The Human Task">
+                <cmmn:defaultControl>
+                    <cmmn:requiredRule>
+                        <cmmn:condition>${true}</cmmn:condition>
+                    </cmmn:requiredRule>
+                    <cmmn:manualActivationRule>
+                        <cmmn:condition>${false}</cmmn:condition>
+                    </cmmn:manualActivationRule>
+                </cmmn:defaultControl>
+            </cmmn:humanTask>
+        </cmmn:casePlanModel>
+    </cmmn:case>
+</cmmn:definitions>

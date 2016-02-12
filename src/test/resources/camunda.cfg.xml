@@ -25,6 +25,12 @@
       </list>
     </property>
 
+    <property name="customPostCmmnTransformListeners">
+      <list>
+        <bean class="org.camunda.bpm.unittest.AddMilestoneTransformListener" />
+      </list>
+    </property>
+
     <property name="failedJobCommandFactory" ref="foxFailedJobCommandFactory" />
 
     <!--<property name="idGenerator" ref="uuidGenerator" />-->
