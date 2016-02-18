@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.HistoryService;
 import org.camunda.bpm.engine.history.HistoricCaseActivityInstance;
-import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.CaseInstance;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
@@ -28,16 +27,12 @@ public class AddMilestoneTransformListenerTest {
         Assume.assumeTrue(caseInstance.isActive());
     }
 
-    @Test
-    public void milestone_should_be_present() {
-        CaseExecution milestone = caseService().createCaseExecutionQuery().activityId(AddMilestoneTransformListener.ID).singleResult();
-        assertThat(milestone).isNotNull();
-    }
 
     @Test
-    public void milestone_should_have_entry_in_history() {
+    public void milestone_should_have_occured() {
         HistoricCaseActivityInstance historicMilestone = historyService().createHistoricCaseActivityInstanceQuery().caseActivityId(AddMilestoneTransformListener.ID).singleResult();
         assertThat(historicMilestone).isNotNull();
+        assertThat(historicMilestone.isCompleted()).isNotNull();
     }
 
     private HistoryService historyService() {return processEngineRule.getHistoryService();}
